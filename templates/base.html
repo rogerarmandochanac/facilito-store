@@ -11,6 +11,17 @@
 </head>
 <body>
     <div class="container">
+        {% block messages %}
+        {% if messages %}
+            {% for message in messages%}
+                <div class="alert alert-dismissible fade show {% if message.tags == 'success'%}alert-success{% else%} alert-danger {% endif %}">
+                    <button type="button" class="btn btn-close" data-bs-dismiss="alert"></button>
+                    {{message}}
+                </div>
+
+            {% endfor %}
+        {% endif %}
+        {% endblock %}
         {% block container %}
 
         {% endblock %}
