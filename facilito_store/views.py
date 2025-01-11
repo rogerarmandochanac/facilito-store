@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def index_view(request):
     return render(request, "index.html", {})
@@ -20,3 +20,8 @@ def login_view(request):
             messages.error(request, "El usuario no se encuentra registrado")
     
     return render(request, "users/login.html", {})
+
+def logout_view(request):
+    logout(request)
+    messages.success(request, "Sesion cerrada exitosamente")
+    return redirect("login")
